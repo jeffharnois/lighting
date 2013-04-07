@@ -1,0 +1,8 @@
+node_modules/
+.monitor
+config/config.js
+Makefile
+*.css
+node_modules
+!.gitignore
+.sass-cache

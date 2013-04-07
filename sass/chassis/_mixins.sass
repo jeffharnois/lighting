@@ -1,0 +1,43 @@
+// Mixins are snippets of reusable CSS to develop faster and keep code readable
+// **double check 3rd party extensions to make sure you're not repeating functionality**
+
+// common compass mixins used often in multiple places
+@import compass/css3/border-radius
+@import compass/css3/box-shadow
+@import compass/css3/images
+@import compass/typography/text/ellipsis
+@import compass/utilities/general/clearfix
+
+// Sizing shortcuts
+=size($height: 5px, $width: 5px)
+  height: $height
+  width: $width
+
+=square($size: 5px)
+  +size($size, $size)
+
+=unselectable()
+  -webkit-touch-callout : none
+  -webkit-user-select   : none
+  -khtml-user-select    : none
+  -moz-user-select      : none
+  -ms-user-select       : none
+  -o-user-select        : none
+  user-select           : none
+
+// always use a fallback to prevent <select> issues with IE
+=Rep-font($weight: 300)
+  font-family: "museo-sans-" + $weight, Arial, sans-serif
+  font-weight: $weight
+
+// input placeholder text
+=placeholder($color: $grayLight)
+  :-moz-placeholder
+    color: $color
+  ::-webkit-input-placeholder
+    color: $color
+
+=animation($name, $duration: 1s, $function: ease, $iterations: 0)
+  $prefixes: webkit moz ms
+  @each $p in $prefixes
+    -#{$p}-animation: $name $duration $function $iterations

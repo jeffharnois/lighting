@@ -1,0 +1,80 @@
+// Typography
+// color, fonts, line heights, etc.
+
+// 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
+// http://clagnut.com/blog/348/#c790
+// 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
+// www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+
+html
+  font-size: 100% // 1
+  -webkit-text-size-adjust: 100% // 2
+  -ms-text-size-adjust: 100% // 2
+
+body
+  font: normal 100% $fontstack /* assume 100% == 16px */
+  color: $black
+
+a
+  color: $linkColor
+  text-decoration: none
+  line-height: inherit
+  font-weight: inherit
+  &:hover
+    color: $linkColorHover
+    cursor: pointer
+    text-decoration: underline
+
+abbr[title]
+  cursor: help
+
+p,
+li
+  font-size: 14px
+  +Rep-font(300)
+  font-style: normal
+  line-height: 18px
+
+// Addresses style set to 'bolder' in FF3+, S4/5, Chrome
+b,
+strong
+  +Rep-font(500)
+
+em
+  +Rep-font(300)
+
+h1
+  +Rep-font(300)
+  font-size: 2em
+
+h2,
+h3,
+h4,
+h5,
+h6
+  +Rep-font(500)
+
+h2
+  font-size: 1.5em
+
+h3
+  font-size: 1.125em
+
+h4
+  font-size: 1em
+
+h5
+  font-size: 0.83em
+
+h6,
+small,
+sub,
+sup
+  font-size: 0.75em
+
+sub,
+sup
+  line-height: 0
+
+.lighten
+  color: $grayLight

@@ -1,0 +1,28 @@
+{
+    "name": "node-boilerplate"
+  , "description": "A framework in nodejs illustrating use of express, hogan and mogoose"
+  , "version": "1.0.0"
+  , "private": false
+  , "author": "Jeff Harnois <jeffharnois@gmail.com> (https://github.com/jeffharnois)"
+  , "engines": {
+        "node": "0.8.14"
+      , "npm": "1.1.65"
+    }
+  , "scripts": {
+      "start": "./node_modules/.bin/nodemon server.js"
+    }
+  , "dependencies": {
+      "express": "latest"
+    , "hogan.js": "latest"
+    , "hogan-template-compiler": "1.0.3"
+    , "consolidate": "git://github.com/simov/consolidate.js.git#hogan-partials"
+    , "mongoose": "latest"
+    , "connect-mongo": "latest"
+    , "connect-flash": "latest"
+    , "passport": "latest"
+    , "passport-local": "latest"
+    , "underscore": "latest"
+    , "crypto": "latest"
+    , "request": "2.16.2"
+  }
+}

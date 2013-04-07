@@ -1,0 +1,41 @@
+<section class="badge">
+  <hgroup>
+    <h1>Welcome to the super duper lighting challenge!</h1>
+  </hgroup>
+
+  <article>
+    <h2>Enter your badge number to begin</h2>
+
+    <form name="badge">
+      <div>
+        <input type="number" min="1" max="6" />
+      </div>
+
+      <input type="submit" class="btn xlarge" value="Get Started" />
+    </form>
+  </article>
+</section>
+<script type="text/javascript">
+  (function($) {
+    $('form').submit(function(e) {
+      var data = {};
+      e.preventDefault();
+      console.log('submitted');
+      $.ajax({
+        url: "/create",
+        dataType: "JSON",
+        type: "POST",
+        data: JSON.stringify({
+          badge: $('input[type="number"]').val()
+        }),
+        success: function(r) {
+          console.log('success r',r);
+          window.location = '/bracket';
+        },
+        error: function(r) {
+          console.log('r error',r);
+        }
+      })
+    });
+  })(jQuery);
+</script>

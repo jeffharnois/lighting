@@ -1,0 +1,84 @@
+// Global Variables
+
+// Colors
+// ----------------------
+
+$blue: #2e8bc0
+
+// grays
+$grayDark: #929292
+$gray: #e8e8e8
+$grayLight: #eeeeee
+$grayLighter: #b8b8b8
+
+$black: #151515
+$white: #fbfbfb
+
+$high: #42a300
+$med-high: #87bf02
+$med: #ce9900
+$med-low: #c85a00 
+$low: #a70700
+// mixtures
+$high-med-high: mix($high, $med-high)
+$med-high-med: mix($med-high, $med)
+$med-low-med: mix($med, $med-low)
+$low-med-low: mix($med-low, $low)
+
+$box-border: #2e729b
+
+// Accent Colors
+$blueDark                     : #069
+$blueDarker                   : darken($blue, 15)
+$blueLight                    : #bce8f1
+$blueLighter                  : #d9edf7
+$red                          : #b94a48
+$redLight                     : #eed3d7
+$redLighter                   : #f2dede
+$green                        : #468847
+$greenLight                   : #d6e9c6
+$greenLighter                 : #dff0d8
+
+// Fonts
+// ----------------------------
+// Base Size used to calculate LOTS of things
+$base-font-size               : 16 //px
+$base-line-height             : 24 //px
+
+// Stacks
+$sans                         : 'Helvetica Neue', Helvetica, Arial, sans-serif
+$serif                        : Georgia, 'Times New Roman', Times, serif
+$slab                         : Rockwell, Times, serif
+$monospace                    : Monaco, 'Courier New', monospace
+$fontstack                    : $sans !default
+
+// Palettes
+// ----------------------------
+
+// Links
+$linkColor                    : $blueDark
+$linkColorHover               : $blueDarker
+
+// Bland (Gray)
+$bland-color                  : $gray
+$bland-background             : $grayLighter
+$bland-border                 : $grayLight
+// Success
+$success-color                : $green
+$success-background           : $greenLighter
+$success-border               : $greenLight
+// Danger
+$error-color                  : $red
+$error-background             : $redLighter
+$error-border                 : $redLight
+// Info
+$info-color                   : $blue
+$info-background              : $blueLighter
+$info-border                  : $blueLight
+
+// Z-Indexes
+// ----------------------------
+// keep layering in order from one place
+$zindexTooltip                : 10000
+$zindexModal                  : 1000
+$zindexAlert                  : 10

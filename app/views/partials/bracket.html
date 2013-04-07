@@ -1,0 +1,55 @@
+<section class="bracket">
+  {{#features}}
+    <div class="feature-{{feature}} feature-set">
+      <div class="set1">
+        {{#pick}}
+          <div data-id={{id}}>{{type}}</div>
+        {{/pick}}
+      </div>
+
+      <div class="set2">
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="set3">
+        <div></div>
+      </div>
+
+    </div>
+  {{/features}}
+  <div class="final-set">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  var sets = $('.feature-set')
+  $('.set1').find('div').click(function(e) {
+    console.log($(this).attr('data-id'));
+    $(this).parents('.set1').removeClass('picked');
+    $(this).addClass('picked');
+    if ($(this).attr('data-id') === "1" ||
+        $(this).attr('data-id') === "2" ||
+        $(this).attr('data-id') === "5" ||
+        $(this).attr('data-id') === "6" ||
+        $(this).attr('data-id') === "9" ||
+        $(this).attr('data-id') === "10" ||
+        $(this).attr('data-id') === "13" ||
+        $(this).attr('data-id') === "14") {
+      console.log('first picked');
+      console.log($(this).attr('data-id'));
+    } else {
+      console.log('not first picked');
+      console.log($(this).attr('data-id'));
+    }
+    // $(this).parents('.feature-set').find('.set2');
+  });
+
+  $('.set2').find('div').click(function(e) {
+
+  });
+
+</script>

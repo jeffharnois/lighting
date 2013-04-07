@@ -1,0 +1,50 @@
+// Lists
+
+dl,
+menu,
+ol,
+ul
+  margin: 1em 0
+
+dd
+  margin: 0 0 0 40px
+
+// Addresses paddings set differently in IE6/7
+menu,
+ol,
+ul
+  padding: 0 0 0 40px
+
+.unstyled
+  list-style-type: none
+  padding: 0
+
+.list-title
+  margin: 1em 0 -0.75em
+  padding-left: 20px
+  em
+    color: $grayLight
+
+// custom bullet lists
+.raquo,
+.checked
+  list-style-type: none
+  padding-bottom: 10px
+  padding-left: 20px
+  li
+    +ellipsis // includes overflow: hidden
+  li:before
+    font-family: Garamond
+    font-size: 1.125em
+    font-weight: 100
+    padding-right: 2px
+  li em
+    color: $grayLight
+
+.raquo li:before
+  content: "\00BB \00a0" // &raquo; &nbsp; => »
+  color: #aeaeae
+
+.checked li:before
+  content: "\002713 \00a0" // &#10003; &nbsp; => ✓
+  color: #6BA84F

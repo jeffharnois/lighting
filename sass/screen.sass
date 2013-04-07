@@ -1,0 +1,67 @@
+@import base
+@import "compass/typography/text/ellipsis"
+$width: 160px
+
+.badge
+  text-align: center
+  input[type="number"]
+    padding: 15px
+    font-size: 18px
+    width: $width
+    text-align: center
+  input[type="submit"]
+    margin: 10px 0 0
+    width: $width
+
+.bracket
+  position: relative
+  margin-top: 10%
+  .feature-set
+    &:nth-child(even)
+      div
+        float: right
+        margin-right: 10px
+    .set1,
+    .set2,
+    .set3
+      float: left
+      width: 15%
+      height: 225px
+      margin-left: 10px
+      div
+        width: 100%
+        border: 1px #c3c3c3 solid
+        height: 30px
+        margin-bottom: 10px
+        font-size: 80%
+        +ellipsis()
+        line-height: 28px
+        padding: 0 5px
+    .set1
+      div
+        &:nth-child(2)
+          margin-bottom: 40px
+    .set2
+      div
+        margin-bottom: 80px
+        &:first-child
+          margin-top: 20px
+    .set3
+      div
+        margin-top: 75px
+  .final-set
+    position: absolute
+    left: 41.5%
+    width: 15%
+    margin-top: 130px
+    div
+      width: 100%
+      border: 1px #c3c3c3 solid
+      height: 30px
+      margin-bottom: 10px
+      font-size: 80%
+      margin-top: 27px
+      +ellipsis()
+      &:first-child
+        margin: 0
+

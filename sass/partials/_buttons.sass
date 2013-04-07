@@ -1,0 +1,169 @@
+@import compass/css3/background-clip
+@import compass/css3/background-size
+@import compass/css3/images
+@import compass/css3/opacity
+@import compass/css3/text-shadow
+@import compass/css3/transform
+@import compass/css3/transition
+@import compass/typography/text/replacement
+
+$base-height: 24px
+$large-height: 32px
+$xlarge-height: 40px
+$xxlarge-height: 80px
+
+$bg-color: #5b9ec7
+$border-radius: 3px
+$border-width: 1px
+$border: $border-width solid $box-border
+
+$loading-diag: rgba(255, 255, 255, .25)
+
+=btn-size($font-size, $height)
+  font-size: $font-size
+  height: $height
+  line-height: $height
+  padding: 0 $height / 2
+  &.left:after,
+  &.right:after
+    +square($height / 2)
+    top: $border-width * ($font-size / 2px)
+  &.left
+    padding-right: $height - ($height / 4)
+    &:after
+      left: round($height / -4) - 1
+  &.right
+    padding-left: $height - ($height / 4)
+    &:after
+      right: round($height / -4) - 1
+
+// loading animation mixins
+=keyframes($name, $endPosition)
+  $prefixes: webkit moz ms
+  @each $p in $prefixes
+    @-#{$p}-keyframes #{$name}
+      0%
+        background-position: 0 0
+      100%
+        background-position: $endPosition $endPosition
+
++keyframes(move#{$base-height}, $base-height)
+
++keyframes(move#{$large-height}, $large-height)
+
++keyframes(move#{$xlarge-height}, $xlarge-height)
+
+=flat($color)
+  background-image: none
+  +single-box-shadow(none)
+  text-decoration: none
+  color: $color
+
+// default (gray)
+.btn
+  +unselectable()
+  +single-transition(color, .3s)
+  display: inline-block
+  +Rep-font(500)
+  margin: 0
+  background-color: $bg-color
+  +background-image(linear-gradient(#5b9ec7, #4b8eb7 50%, #30709a))
+  border: $border
+  +border-radius($border-radius)
+  font-size: 12px
+  +single-text-shadow(#2e5b6c, 0, 1px, 0)
+  color: $white
+  height: $base-height
+  line-height: $base-height
+  padding: 0 $base-height / 2
+  cursor: pointer
+  &:hover,
+  &:disabled,
+  &.disabled
+    +background-image(linear-gradient(#5b9ec7, #4b8eb7 20%, #30709a))
+    color: $white
+    text-decoration: none
+  &:disabled,
+  &.disabled
+    pointer-events: none
+    cursor: default
+  &:active
+    +background-image(linear-gradient(#30709a, #4b8eb7 50%, #5b9ec7))
+
+// nav
+.btn
+  &.left,
+  &.right
+    position: relative
+    +single-box-shadow(none)
+    +border-radius(0)
+    &:after
+      content: ""
+      display: block
+      position: absolute
+      top: $border-width * 4
+      background-color: $bg-color
+      +background-image(linear-gradient(top left, #5b9ec7, #4b8eb7 50%, #30709a))
+      +square($base-height / 2)
+      +border-radius($border-radius - 1)
+      -webkit-backface-visibility: hidden
+      +transform(matrix(0.6, 1, -0.6, 1, 0, 0))
+    &:hover:after
+      +background-image(linear-gradient(top left, #5b9ec7, #4b8eb7 20%, #30709a))
+    &:active:after
+      +background-image(linear-gradient(top left, #30709a, #4b8eb7 50%, #5b9ec7))
+  &.left
+    padding-right: $base-height - ($base-height / 4)
+    +border-top-right-radius($border-radius)
+    +border-bottom-right-radius($border-radius)
+    &:after
+      left: round($base-height / -4) - 1
+      border-left: $border
+      border-bottom: $border
+      +border-bottom-left-radius(0)
+  &.right
+    padding-left: $base-height - ($base-height / 4)
+    +border-top-left-radius($border-radius)
+    +border-bottom-left-radius($border-radius)
+    &:after
+      right: round($base-height / -4) - 1
+      border-right: $border
+      border-top: $border
+      +border-top-right-radius(0)
+
+// Sizes
+// ---------------
+.btn
+  &.large
+    +btn-size(14px, $large-height)
+  &.xlarge
+    +btn-size(16px, $xlarge-height)
+    border-width: 2px
+  &.xxlarge
+    +btn-size(25px, $xxlarge-height)
+    +border-radius(10px)
+    border-width: 2px
+
+// loading states
+// TODO: easier to read gradient definitions
+.btn.loading
+  position: relative
+  &::before
+    content: ""
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 1
+    overflow: hidden
+    background-position: 0 0
+    +background(linear-gradient(top left,$loading-diag 25%,transparent 25%,transparent 50%,$loading-diag 50%,$loading-diag 75%,transparent 75%,transparent))
+    +background-size($base-height $base-height)
+    +animation(move#{$base-height}, 4s, linear, infinite)
+  &.large::before
+    +background-size($large-height $large-height)
+    +animation(move#{$large-height}, 4s, linear, infinite)
+  &.xlarge::before
+    +background-size($xlarge-height $xlarge-height)
+    +animation(move#{$xlarge-height}, 4s, linear, infinite)
