@@ -26,30 +26,69 @@
 </section>
 
 <script type="text/javascript">
-  var sets = $('.feature-set')
-  $('.set1').find('div').click(function(e) {
-    console.log($(this).attr('data-id'));
-    $(this).parents('.set1').removeClass('picked');
-    $(this).addClass('picked');
-    if ($(this).attr('data-id') === "1" ||
-        $(this).attr('data-id') === "2" ||
-        $(this).attr('data-id') === "5" ||
-        $(this).attr('data-id') === "6" ||
-        $(this).attr('data-id') === "9" ||
-        $(this).attr('data-id') === "10" ||
-        $(this).attr('data-id') === "13" ||
-        $(this).attr('data-id') === "14") {
-      console.log('first picked');
-      console.log($(this).attr('data-id'));
-    } else {
-      console.log('not first picked');
-      console.log($(this).attr('data-id'));
-    }
-    // $(this).parents('.feature-set').find('.set2');
-  });
+  (function($) {
+    $('.set1').find('div').click(function(e) {
+      var att = $(this).attr('data-id');
+      if (att === "1" ||
+          att === "2" ||
+          att === "5" ||
+          att === "6" ||
+          att === "9" ||
+          att === "10" ||
+          att === "13" ||
+          att === "14") {
+        $(this).parents('.feature-set').find('.set2').find('div').first().html($(this).html()).attr('data-id',att);
+      } else {
+        $(this).parents('.feature-set').find('.set2').find('div').last().html($(this).html()).attr('data-id',att);
+      }
+    });
 
-  $('.set2').find('div').click(function(e) {
+    $('.set2').find('div').click(function(e) {
+      var att = $(this).attr('data-id');
+      if (att === "1" ||
+          att === "2" ||
+          att === "3" ||
+          att === "4" ||
+          att === "9" ||
+          att === "10" ||
+          att === "11" ||
+          att === "12") {
+        $(this).parents('.feature-set').find('.set3').find('div').html($(this).html()).attr('data-id',att);
+      } else {
+        $(this).parents('.feature-set').find('.set3').find('div').html($(this).html()).attr('data-id',att);
+      }
+    });
 
-  });
+    $('.set3').find('div').click(function(e) {
+      var att = $(this).attr('data-id');
+      if (att === "1" ||
+          att === "2" ||
+          att === "3" ||
+          att === "4" ||
+          att === "5" ||
+          att === "6" ||
+          att === "7" ||
+          att === "8") {
+        $(this).parents('.bracket').find('.final-set').find('div').first().html($(this).html()).attr('data-id',att);
+      } else {
+        $(this).parents('.bracket').find('.final-set').find('div').last().html($(this).html()).attr('data-id',att);
+      }
+    });
 
+    $('.final-set').find('div:first-child').click(function(e) {
+      var att = $(this).attr('data-id');
+      $(this).parents('.bracket').find('.final-set').find('div:nth-child(2)').html($(this).html()).attr('data-id',att);
+      setTimeout(function() {
+        window.location = '/final?id='+att;
+      },1000);
+    });
+
+    $('.final-set').find('div:last-child').click(function(e) {
+      var att = $(this).attr('data-id');
+      $(this).parents('.bracket').find('.final-set').find('div:nth-child(2)').html($(this).html()).attr('data-id',att);
+      setTimeout(function() {
+        window.location = '/final?id='+att;
+      },1000);
+    });
+  })(jQuery);
 </script>
