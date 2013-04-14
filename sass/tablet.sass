@@ -1,0 +1,181 @@
+@import base
+@import "compass/typography/text/ellipsis"
+$width: 160px
+
+body
+  +background-image(image-url('lighting.png'))
+  background-repeat: no-repeat
+
+.btn
+  +background-image(image-url('button.png'))
+  width: 316px
+  height: 83px
+  text-align: center
+  line-height: 70px
+  font-size: 32px
+  +transform(scale(0.6, 0.6))
+  margin: 30px auto
+
+.final,
+.badge article
+  background-color: rgba(#000000, 0.8)
+  padding: 2%
+  float: left
+  border: 1px $white solid
+  margin: 5% 10%
+  height: 570px
+  width: 80%
+
+.badge
+  height: 100%
+  width: 100%
+  text-align: center
+  article
+    margin: 0 10% 0
+    height: 300px
+  input[type="number"]
+    padding: 15px
+    font-size: 18px
+    width: $width
+    text-align: center
+    margin-top: 20px
+  input[type="submit"]
+    margin: 10px 0 0
+    width: $width
+  .logo
+    +background-image(image-url('logo.png'))
+    width: 445px
+    height: 243px
+    +transform(scale(0.8,0.8))
+    margin: 0 auto
+    
+
+.pick
+  +background-image(image-url('bracket.png'))
+  width: 316px
+  height: 83px
+  font-size: 20px
+  font-weight: normal
+  padding: 25px 10px 20px 70px
+  &.mine
+    +background-image(image-url('bracket-selected.png'))
+
+.bracket
+  position: relative
+  float: left
+  width: 100%
+  .feature-set
+    position: relative
+    +transition(top, ease-in, 1s)
+    +transition(left, ease-in, 1s)
+    +transition(right, ease-in, 1s)
+    +transition(bottom, ease-in, 1s)
+    .next
+      display: none
+      float: right
+      margin: 20px 0
+    h1
+      font-weight: bold
+      font-size: 42px
+      margin: 10px 0
+      width: 100%
+      padding: 0 40px
+      +text-shadow(0 0 10px #2bc0eb)
+    &:first-child
+      top: 0
+    &:nth-child(3),
+    &:nth-child(4)
+      div
+        float: right
+        margin-right: 10px
+      h1
+        float: right
+        text-align: right
+      .next
+        float: left
+    .set1,
+    .set2,
+    .set3,
+    .set4,
+    .set5,
+    .set6
+      float: left
+      width: 30%
+      height: 225px
+      margin-left: 0px
+      margin-top: 20px
+      div
+        @extend .pick
+    .set1,
+    .set4
+      div
+        +transform(scale(0.8, 0.8))
+    .set2,
+    .set5
+      div
+        +transform(scale(0.9, 0.9))
+        margin-bottom: 80px
+        &:first-child
+          margin-top: 45px
+    .set3,
+    .set6
+      div
+        margin-top: 125px
+    .setTitle-dimming
+      +background-image(image-url('text/dimming.png'))
+      width: 427px
+      height: 89px
+      margin-left: 30px
+    .setTitle-sensorandtech
+      +background-image(image-url('text/sensorandtech.png'))
+      width: 732px
+      height: 89px
+      margin-left: 30px
+    .setTitle-controlfeatures
+      +background-image(image-url('text/controlfeatures.png'))
+      width: 917px
+      height: 89px
+      margin-right: 30px
+    .setTitle-communication
+      +background-image(image-url('text/communication.png'))
+      width: 782px
+      height: 89px
+      margin-right: 30px
+    &.feature-dimming
+      &.out
+        +transform(translate(0, -580px))
+    &.feature-sensorandtech
+      top: 300px
+      &.in
+        +transform(translate(0, -580px))
+      &.out
+        +transform(translate(-700px, 0))
+    &.feature-controlfeatures
+      left: 1024px
+      top: -1596px
+      &.in
+        +transform(translate(-1024px, 680px))
+      &.out
+        +transform(translate(-1024px, 0))
+    &.feature-communication
+      left: -20px
+      top: -505px
+      &.in
+        +transform(translate(0, -830px))
+      &.out
+        +transform(translate(1024px, -200px))
+  .final-set
+    position: absolute
+    width: 100%
+    top: -580px
+    left: -1024px
+    &.in
+      +transform(translate(1024px, 600px))
+    // +transition(transform, ease-in, 1s)
+    // &.tiny
+      // +transform(scale(0.2,0.2))
+
+.final
+  h1,
+  h2
+    text-align: center

@@ -1,6 +1,8 @@
 <section class="bracket">
   {{#features}}
     <div class="feature-{{feature}} feature-set">
+      <h1>Make your picks!</h1>
+      <div class="setTitle-{{feature}}"></div>
       <div class="set1">
         {{#pick}}
           <div data-id={{id}}>{{type}}</div>
@@ -15,20 +17,37 @@
       <div class="set3">
         <div></div>
       </div>
-
+      <div class="next curr-{{feature}} btn">
+        Next
+      </div>
     </div>
   {{/features}}
-  <div class="final-set">
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="final-set feature-set tiny">
+    <h1>Make your final picks!</h1>
+    <div class="set4">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="set5">
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="set6">
+      <div></div>
+    </div>
   </div>
 </section>
 
 <script type="text/javascript">
   (function($) {
+
     $('.set1').find('div').click(function(e) {
       var att = $(this).attr('data-id');
+      $(this).addClass('mine');
       if (att === "1" ||
           att === "2" ||
           att === "5" ||
@@ -57,9 +76,22 @@
       } else {
         $(this).parents('.feature-set').find('.set3').find('div').html($(this).html()).attr('data-id',att).addClass('mine');
       }
+      if ($(this).parents('.feature-set').attr('class').indexOf('dimming') !== -1) {
+        $('.final-set').find('.set4').find('div:nth-child(1)').html($(this).html()).attr('data-id',att).addClass('mine');
+      }
+      if ($(this).parents('.feature-set').attr('class').indexOf('sensorandtech') !== -1) {
+        $('.final-set').find('.set4').find('div:nth-child(2)').html($(this).html()).attr('data-id',att).addClass('mine');
+      }
+      if ($(this).parents('.feature-set').attr('class').indexOf('controlfeatures') !== -1) {
+        $('.final-set').find('.set4').find('div:nth-child(3)').html($(this).html()).attr('data-id',att).addClass('mine');
+      }
+      if ($(this).parents('.feature-set').attr('class').indexOf('communication') !== -1) {
+        $('.final-set').find('.set4').find('div:nth-child(4)').html($(this).html()).attr('data-id',att).addClass('mine');
+      }
+      $(this).parents('.feature-set').find('.next').show();
     });
 
-    $('.set3').find('div').click(function(e) {
+    $('.set4').find('div').click(function(e) {
       var att = $(this).attr('data-id');
       if (att === "1" ||
           att === "2" ||
@@ -69,26 +101,38 @@
           att === "6" ||
           att === "7" ||
           att === "8") {
-        $(this).parents('.bracket').find('.final-set').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
+        $(this).parents('.bracket').find('.final-set').find('.set5').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
       } else {
-        $(this).parents('.bracket').find('.final-set').find('div').last().html($(this).html()).attr('data-id',att).addClass('mine');
+        $(this).parents('.bracket').find('.final-set').find('.set5').find('div').last().html($(this).html()).attr('data-id',att).addClass('mine');
       }
     });
 
-    $('.final-set').find('div:first-child').click(function(e) {
+    $('.set5').find('div').click(function(e) {
       var att = $(this).attr('data-id');
-      $(this).parents('.bracket').find('.final-set').find('div:nth-child(2)').html($(this).html()).attr('data-id',att).addClass('mine');
+      $(this).parents('.bracket').find('.final-set').find('.set6').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
       setTimeout(function() {
         window.location = '/final?id='+att;
       },1000);
     });
 
-    $('.final-set').find('div:last-child').click(function(e) {
-      var att = $(this).attr('data-id');
-      $(this).parents('.bracket').find('.final-set').find('div:nth-child(2)').html($(this).html()).attr('data-id',att).addClass('mine');
-      setTimeout(function() {
-        window.location = '/final?id='+att;
-      },1000);
+    $('.next').click(function(e) {
+      var anim = 1000;
+      if ($(e.currentTarget).attr('class').indexOf('dimming') !== -1) {
+        $('.feature-dimming').addClass('out');
+        $('.feature-sensorandtech').addClass('in');
+      }
+      if ($(e.currentTarget).attr('class').indexOf('sensorandtech') !== -1) {
+        $('.feature-sensorandtech').removeClass('in').addClass('out');
+        $('.feature-controlfeatures').addClass('in');
+      }
+      if ($(e.currentTarget).attr('class').indexOf('controlfeatures') !== -1) {
+        $('.feature-controlfeatures').removeClass('in').addClass('out');
+        $('.feature-communication').addClass('in');
+      }
+      if ($(e.currentTarget).attr('class').indexOf('communication') !== -1) {
+        $('.feature-communication').removeClass('in').addClass('out');
+        $('.final-set').addClass('in');
+      }
     });
   })(jQuery);
 </script>
