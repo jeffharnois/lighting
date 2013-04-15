@@ -6,7 +6,7 @@
 
     <form name="badge">
       <div>
-        <input type="number" min="100000" max="999999" />
+        <input type="number" min="100000" max="999999" name="badge" id="badge" />
       </div>
 
       <div class="btn">Get Started</div>
@@ -19,24 +19,9 @@
       $('form').submit();
     });
     $('form').submit(function(e) {
-      var data = {};
+      var data = $('form').serializeObject();
       e.preventDefault();
-      console.log('submitted');
-      $.ajax({
-        url: "/create",
-        dataType: "JSON",
-        type: "POST",
-        data: JSON.stringify({
-          badge: $('input[type="number"]').val()
-        }),
-        success: function(r) {
-          console.log('success r',r);
-          window.location = '/bracket';
-        },
-        error: function(r) {
-          console.log('r error',r);
-        }
-      })
+      window.location = '/bracket?id='+data.badge;
     });
   })(jQuery);
 </script>

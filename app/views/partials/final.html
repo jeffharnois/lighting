@@ -1,6 +1,24 @@
 <section class="final">
-  <hgroup>
+  <div class="logo"></div>
+ <!--  <hgroup>
     <h1>Thanks for playing! &ndash; And the winner is...</h1>
     <h2>{{topChoice}}</h2>
-  </hgroup>
+  </hgroup> -->
+  <div class=winner>
+    <h1>Your Winner:</h1>
+    <div class="yourSelection">
+      {{yourChoice}}
+    </div>
+  </div>
+  <div class=percent>
+    <p>Thanks for helping design the future of light!</p>
+    <p>{{percent}}% of respondents picked your winner.</p>
+  </div>
 </section>
+<script type="text/javascript">
+  (function($) {
+    setTimeout(function() {
+      window.location = '/';
+    },15000);
+  })(jQuery);
+</script>

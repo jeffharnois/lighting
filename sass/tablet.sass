@@ -16,6 +16,13 @@ body
   +transform(scale(0.6, 0.6))
   margin: 30px auto
 
+.logo
+  +background-image(image-url('logo.png'))
+  width: 445px
+  height: 243px
+  +transform(scale(0.8,0.8))
+  margin: 0 auto
+
 .final,
 .badge article
   background-color: rgba(#000000, 0.8)
@@ -42,13 +49,14 @@ body
   input[type="submit"]
     margin: 10px 0 0
     width: $width
-  .logo
-    +background-image(image-url('logo.png'))
-    width: 445px
-    height: 243px
-    +transform(scale(0.8,0.8))
-    margin: 0 auto
-    
+
+.h1
+  font-weight: bold
+  font-size: 42px
+  margin: 10px 0
+  width: 100%
+  padding: 0 40px
+  +text-shadow(0 0 10px #2bc0eb)
 
 .pick
   +background-image(image-url('bracket.png'))
@@ -75,12 +83,7 @@ body
       float: right
       margin: 20px 0
     h1
-      font-weight: bold
-      font-size: 42px
-      margin: 10px 0
-      width: 100%
-      padding: 0 40px
-      +text-shadow(0 0 10px #2bc0eb)
+      @extend .h1
     &:first-child
       top: 0
     &:nth-child(3),
@@ -171,11 +174,27 @@ body
     left: -1024px
     &.in
       +transform(translate(1024px, 600px))
+    .done
+      float: right
     // +transition(transform, ease-in, 1s)
     // &.tiny
       // +transform(scale(0.2,0.2))
 
 .final
-  h1,
-  h2
+  h1
     text-align: center
+    @extend .h1
+  .winner,
+  .percent
+    float: left
+  .winner
+    width: 45%
+    margin-left: 10px
+  .percent
+    width: 50%
+    p
+      font-size: 24px
+      line-height: 24px
+  .yourSelection
+    @extend .pick
+    @extend .pick.mine

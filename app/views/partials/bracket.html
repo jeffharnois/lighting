@@ -39,11 +39,53 @@
     <div class="set6">
       <div></div>
     </div>
+    <div class="done btn">
+      Done
+    </div>
   </div>
 </section>
 
 <script type="text/javascript">
   (function($) {
+    var bid = window.location.search.replace('?id=',"");
+    var pick = {
+      user: bid,
+      bracketOne: {
+        firstRound: {
+          first: null,
+          second: null
+        },
+        secondRound: null
+      },
+      bracketTwo: {
+        firstRound: {
+          first: null,
+          second: null
+        },
+        secondRound: null
+      },
+      bracketThree: {
+        firstRound: {
+          first: null,
+          second: null
+        },
+        secondRound: null
+      },
+      bracketFour: {
+        firstRound: {
+          first: null,
+          second: null
+        },
+        secondRound: null
+      },
+      bracketFinal: {
+        firstRound: {
+          first: null,
+          second: null
+        },
+        secondRound: null
+      }
+    };
 
     $('.set1').find('div').click(function(e) {
       var att = $(this).attr('data-id');
@@ -57,8 +99,32 @@
           att === "13" ||
           att === "14") {
         $(this).parents('.feature-set').find('.set2').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
+        if (att === "1" || att === "2") {
+          pick.bracketOne.firstRound.first = att;
+        }
+        if (att === "5" || att === "6") {
+          pick.bracketTwo.firstRound.first = att;
+        }
+        if (att === "9" || att === "10") {
+          pick.bracketThree.firstRound.first = att;
+        }
+        if (att === "13" || att === "14") {
+          pick.bracketFour.firstRound.first = att;
+        }
       } else {
         $(this).parents('.feature-set').find('.set2').find('div').last().html($(this).html()).attr('data-id',att).addClass('mine');
+        if (att === "3" || att === "4") {
+          pick.bracketOne.firstRound.second = att;
+        }
+        if (att === "7" || att === "8") {
+          pick.bracketTwo.firstRound.second = att;
+        }
+        if (att === "11" || att === "12") {
+          pick.bracketThree.firstRound.second = att;
+        }
+        if (att === "15" || att === "16") {
+          pick.bracketFour.firstRound.second = att;
+        }
       }
     });
 
@@ -73,8 +139,18 @@
           att === "11" ||
           att === "12") {
         $(this).parents('.feature-set').find('.set3').find('div').html($(this).html()).attr('data-id',att).addClass('mine');
+        if (att === "1" || att === "2" || att === "3" || att === "4") {
+          pick.bracketOne.secondRound = att;
+        } else {
+          pick.bracketThree.secondRound = att;
+        }
       } else {
         $(this).parents('.feature-set').find('.set3').find('div').html($(this).html()).attr('data-id',att).addClass('mine');
+        if (att === "13" || att === "14" || att === "15" || att === "16") {
+          pick.bracketTwo.secondRound = att;
+        } else {
+          pick.bracketFour.secondRound = att;
+        }
       }
       if ($(this).parents('.feature-set').attr('class').indexOf('dimming') !== -1) {
         $('.final-set').find('.set4').find('div:nth-child(1)').html($(this).html()).attr('data-id',att).addClass('mine');
@@ -102,17 +178,58 @@
           att === "7" ||
           att === "8") {
         $(this).parents('.bracket').find('.final-set').find('.set5').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
+        pick.bracketFinal.firstRound.first = att;
       } else {
         $(this).parents('.bracket').find('.final-set').find('.set5').find('div').last().html($(this).html()).attr('data-id',att).addClass('mine');
+        pick.bracketFinal.firstRound.second = att;
       }
     });
 
     $('.set5').find('div').click(function(e) {
       var att = $(this).attr('data-id');
       $(this).parents('.bracket').find('.final-set').find('.set6').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
-      setTimeout(function() {
-        window.location = '/final?id='+att;
-      },1000);
+      pick.finalPick = att;
+    });
+
+        
+
+      // $.ajax({
+      //   url: "/signup",
+      //   type: "POST",
+      //   data: data,
+      //   success: function(r) {
+          // if (r.success) {
+          //   window.location = '/bracket?id='+r.user._id;
+          // } else {
+          //   alert("Your badge is already in our system.  Thank you for your interest");
+          // }
+      //   },
+      //   error: function(r) {
+      //     console.log('r error',r);
+      //     alert("We encountered an error.  Please try again later");
+      //   }
+      // });
+
+    
+
+    $('.done').click(function(e) {
+      console.log('pick',pick);
+      $.ajax({
+        url: "/createAndSavePicks",
+        type: "POST",
+        data: pick,
+        success: function(r) {
+          console.log('r',r);
+          if (r.success) {
+            window.location = '/final?id=' + pick.finalPick;
+          } else {
+            alert("Your badge is already in our system.  Thank you for your interest");
+          }
+        },
+        error: function(r) {
+          console.log('r error',r);
+        }
+      })
     });
 
     $('.next').click(function(e) {

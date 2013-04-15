@@ -5,7 +5,7 @@
 
 var express = require('express')
   , mongoStore = require('connect-mongo')(express)
-  // , flash = require('connect-flash')
+  , flash = require('connect-flash')
   , path = require('path');
 
 module.exports = function (app, config, passport, HoganTemplateRenderer) {
@@ -43,20 +43,20 @@ module.exports = function (app, config, passport, HoganTemplateRenderer) {
     app.use(express.cookieParser());
 
     // express/mongo session storage
-    // app.use(express.session({
-    //   secret: 'noobjs',
-    //   store: new mongoStore({
-    //     url: config.db,
-    //     collection : 'sessions'
-    //   })
-    // }));
+    app.use(express.session({
+      secret: 'noobjs',
+      store: new mongoStore({
+        url: config.db,
+        collection : 'sessions'
+      })
+    }));
 
     // connect flash for flash messages
-    // app.use(flash());
+    app.use(flash());
 
     // use passport session
-    // app.use(passport.initialize());
-    // app.use(passport.session());
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     app.use(express.favicon());
 

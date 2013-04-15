@@ -7,7 +7,8 @@ var mongoose = require('mongoose')
 module.exports = function (app, passport, auth, config, hoganTemplateRenderer) {
 
   // user routes
-  // var users = require('../app/controllers/users');
+  var users = require(config.root + '/app/controllers/users')
+    , picks = require(config.root+ '/app/controllers/picks');
 
   // app.get('/logout', users.logout);
 
@@ -23,13 +24,7 @@ module.exports = function (app, passport, auth, config, hoganTemplateRenderer) {
   //   ), 
   //   users.session);
 
-  app.post('/create', function(req, res) {
-    res.contentType('json');
-    res.send({ success: true });
-  });
-
-  // leave this commented
-  // app.post('/signup', users.create);
+  app.post('/createAndSavePicks', users.createAndSavePicks);
 
   var features = [
     {
@@ -87,28 +82,28 @@ module.exports = function (app, passport, auth, config, hoganTemplateRenderer) {
   });
 
   app.get("/final", function(req, res) {
-    // console.log('req');
-    // console.log(req.query['id']);
-    var i = '';
-    _.each(features, function(e) {
-      // console.log(e);
-      _.each(e.pick, function(ele) {
-        // console.log(ele);
-        if (ele.id == req.query['id']) {
-          i = ele.type;
-          // console.log('ele.type is',ele.type);
+    picks.getPercent(req, res, function(mine, total) {
+      var i = '',
+          percent = Math.floor((mine / total) * 100);
+      console.log('render',mine,total);
+      console.log('percent',percent);
+      _.each(features, function(e) {
+        _.each(e.pick, function(ele) {
+          if (ele.id == req.query['id']) {
+            i = ele.type;
+          }
+        });
+      });
+      res.locals = {
+        yourChoice: i,
+        percent: percent
+      };
+      res.render("layout", {
+        partials: {
+          header: "partials/header",
+          partial: "partials/final"
         }
       });
-    });
-    // console.log(i);
-    res.locals = {
-      topChoice: i
-    };
-    res.render("layout", {
-      partials: {
-        header: "partials/header",
-        partial: "partials/final"
-      }
     });
   });
 
