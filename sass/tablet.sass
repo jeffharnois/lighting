@@ -2,6 +2,11 @@
 @import "compass/typography/text/ellipsis"
 $width: 160px
 
+
+
+@import "sprites/*.png"
++all-sprites-sprites
+
 body
   +background-image(image-url('lighting.png'))
   background-repeat: no-repeat
@@ -57,6 +62,10 @@ body
   width: 100%
   padding: 0 40px
   +text-shadow(0 0 10px #2bc0eb)
+  &.em
+    font-weight: bold
+
+$sprites: co2 fire humidity iphone motion-detect on-off security smoke-alarm temperature wifi zigbee
 
 .pick
   +background-image(image-url('bracket.png'))
@@ -65,8 +74,20 @@ body
   font-size: 20px
   font-weight: normal
   padding: 25px 10px 20px 70px
+  position: relative
   &.mine
     +background-image(image-url('bracket-selected.png'))
+  &.twoline
+    padding: 13px 10px 20px 70px
+
+@each $sprite in $sprites
+  .btn-#{$sprite}
+    @extend .sprites-#{$sprite}
+    width: 40px
+    height: 40px
+    position: absolute
+    bottom: 10px
+    left: 10px
 
 .bracket
   position: relative

@@ -5,7 +5,7 @@
       <div class="setTitle-{{feature}}"></div>
       <div class="set1">
         {{#pick}}
-          <div data-id={{id}}>{{type}}</div>
+          <div data-id={{id}} {{#twoline}}class=twoline{{/twoline}}>{{type}}<span class=btn-{{imgclass}}></span></div>
         {{/pick}}
       </div>
 
@@ -23,7 +23,7 @@
     </div>
   {{/features}}
   <div class="final-set feature-set tiny">
-    <h1>Make your final picks!</h1>
+    <h1>It&rsquo;s the <em>Final Four!</em>  Make your final picks!</h1>
     <div class="set4">
       <div></div>
       <div></div>
@@ -47,6 +47,9 @@
 
 <script type="text/javascript">
   (function($) {
+    document.ontouchmove = function(event){
+      event.preventDefault();
+    }
     var bid = window.location.search.replace('?id=',"");
     var pick = {
       user: bid,
