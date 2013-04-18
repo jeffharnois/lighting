@@ -21,7 +21,7 @@
     $('form').submit(function(e) {
       var data = $('form').serializeObject();
       e.preventDefault();
-      window.location = '/bracket?id='+data.badge;
+      window.location = '/main?id='+data.badge;
     });
   })(jQuery);
 </script>

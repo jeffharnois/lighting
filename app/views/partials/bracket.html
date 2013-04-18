@@ -5,7 +5,21 @@
       <div class="setTitle-{{feature}}"></div>
       <div class="set1">
         {{#pick}}
-          <div data-id={{id}} {{#twoline}}class=twoline{{/twoline}}>{{type}}<span class=btn-{{imgclass}}></span></div>
+          {{#desc}}
+            <div data-id={{id}} class="stupidDesc {{#twoline}}twoline{{/twoline}}">
+              {{type}}
+              <br />
+              <span class="stupiddesc">{{desc}}</span>
+              <span class=btn-{{imgclass}}></span>
+            </div>
+          {{/desc}}
+          {{^desc}}
+            <div data-id={{id}} {{#twoline}}class=twoline{{/twoline}}>
+              {{type}}
+              <br />
+              <span class=btn-{{imgclass}}></span>
+            </div>
+          {{/desc}}
         {{/pick}}
       </div>
 
@@ -37,6 +51,7 @@
     </div>
 
     <div class="set6">
+      <h1>Champion</h1>
       <div></div>
     </div>
     <div class="done btn">
@@ -102,6 +117,12 @@
           att === "13" ||
           att === "14") {
         $(this).parents('.feature-set').find('.set2').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $(this).parents('.feature-set').find('.set2').find('div').first().addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $(this).parents('.feature-set').find('.set2').find('div').first().addClass('twoline');
+        }
         if (att === "1" || att === "2") {
           pick.bracketOne.firstRound.first = att;
         }
@@ -116,6 +137,12 @@
         }
       } else {
         $(this).parents('.feature-set').find('.set2').find('div').last().html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $(this).parents('.feature-set').find('.set2').find('div').last().addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $(this).parents('.feature-set').find('.set2').find('div').last().addClass('twoline');
+        }
         if (att === "3" || att === "4") {
           pick.bracketOne.firstRound.second = att;
         }
@@ -142,6 +169,12 @@
           att === "11" ||
           att === "12") {
         $(this).parents('.feature-set').find('.set3').find('div').html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $(this).parents('.feature-set').find('.set3').find('div').addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $(this).parents('.feature-set').find('.set3').find('div').addClass('twoline');
+        }
         if (att === "1" || att === "2" || att === "3" || att === "4") {
           pick.bracketOne.secondRound = att;
         } else {
@@ -149,6 +182,12 @@
         }
       } else {
         $(this).parents('.feature-set').find('.set3').find('div').html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $(this).parents('.feature-set').find('.set3').find('div').addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $(this).parents('.feature-set').find('.set3').find('div').addClass('twoline');
+        }
         if (att === "13" || att === "14" || att === "15" || att === "16") {
           pick.bracketTwo.secondRound = att;
         } else {
@@ -157,15 +196,39 @@
       }
       if ($(this).parents('.feature-set').attr('class').indexOf('dimming') !== -1) {
         $('.final-set').find('.set4').find('div:nth-child(1)').html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $('.final-set').find('.set4').find('div:nth-child(1)').addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $('.final-set').find('.set4').find('div:nth-child(1)').addClass('twoline');
+        }
       }
       if ($(this).parents('.feature-set').attr('class').indexOf('sensorandtech') !== -1) {
         $('.final-set').find('.set4').find('div:nth-child(2)').html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $('.final-set').find('.set4').find('div:nth-child(2)').addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $('.final-set').find('.set4').find('div:nth-child(2)').addClass('twoline');
+        }
       }
       if ($(this).parents('.feature-set').attr('class').indexOf('controlfeatures') !== -1) {
         $('.final-set').find('.set4').find('div:nth-child(3)').html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $('.final-set').find('.set4').find('div:nth-child(3)').addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $('.final-set').find('.set4').find('div:nth-child(3)').addClass('twoline');
+        }
       }
       if ($(this).parents('.feature-set').attr('class').indexOf('communication') !== -1) {
         $('.final-set').find('.set4').find('div:nth-child(4)').html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $('.final-set').find('.set4').find('div:nth-child(4)').addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $('.final-set').find('.set4').find('div:nth-child(4)').addClass('twoline');
+        }
       }
       $(this).parents('.feature-set').find('.next').show();
     });
@@ -181,9 +244,21 @@
           att === "7" ||
           att === "8") {
         $(this).parents('.bracket').find('.final-set').find('.set5').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $(this).parents('.feature-set').find('.set5').find('div').first().addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $(this).parents('.feature-set').find('.set5').find('div').first().addClass('twoline');
+        }
         pick.bracketFinal.firstRound.first = att;
       } else {
         $(this).parents('.bracket').find('.final-set').find('.set5').find('div').last().html($(this).html()).attr('data-id',att).addClass('mine');
+        if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $(this).parents('.feature-set').find('.set5').find('div').last().addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $(this).parents('.feature-set').find('.set5').find('div').last().addClass('twoline');
+        }
         pick.bracketFinal.firstRound.second = att;
       }
     });
@@ -191,38 +266,23 @@
     $('.set5').find('div').click(function(e) {
       var att = $(this).attr('data-id');
       $(this).parents('.bracket').find('.final-set').find('.set6').find('div').first().html($(this).html()).attr('data-id',att).addClass('mine');
+      if ($(this).attr('class').indexOf('stupid') !== -1) {
+          $(this).parents('.feature-set').find('.set6').find('div').first().addClass('stupidDesc');
+        }
+        if ($(this).attr('class').indexOf('twoline') !== -1) {
+          $(this).parents('.feature-set').find('.set6').find('div').first().addClass('twoline');
+        }
       pick.finalPick = att;
+      $(this).parents('.feature-set').find('.done').show();
     });
-
-        
-
-      // $.ajax({
-      //   url: "/signup",
-      //   type: "POST",
-      //   data: data,
-      //   success: function(r) {
-          // if (r.success) {
-          //   window.location = '/bracket?id='+r.user._id;
-          // } else {
-          //   alert("Your badge is already in our system.  Thank you for your interest");
-          // }
-      //   },
-      //   error: function(r) {
-      //     console.log('r error',r);
-      //     alert("We encountered an error.  Please try again later");
-      //   }
-      // });
-
     
 
     $('.done').click(function(e) {
-      console.log('pick',pick);
       $.ajax({
         url: "/createAndSavePicks",
         type: "POST",
         data: pick,
         success: function(r) {
-          console.log('r',r);
           if (r.success) {
             window.location = '/final?id=' + pick.finalPick;
           } else {
@@ -230,7 +290,7 @@
           }
         },
         error: function(r) {
-          console.log('r error',r);
+          alert('We encountered an error.');
         }
       })
     });

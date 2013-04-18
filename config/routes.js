@@ -33,8 +33,15 @@ module.exports = function (app, passport, auth, config, hoganTemplateRenderer) {
     };
     res.render("layout", {
       partials: {
-        header: "partials/header",
         partial: "partials/bracket"
+      }
+    });
+  });
+
+  app.get('/main', function(req, res) {
+    res.render("layout", {
+      partials: {
+        partial: 'partials/main'
       }
     });
   });
@@ -58,7 +65,6 @@ module.exports = function (app, passport, auth, config, hoganTemplateRenderer) {
       };
       res.render("layout", {
         partials: {
-          header: "partials/header",
           partial: "partials/final"
         }
       });
@@ -68,7 +74,6 @@ module.exports = function (app, passport, auth, config, hoganTemplateRenderer) {
   app.get("/", function(req, res) {
     res.render("layout", {
       partials: {
-        header: "partials/header",
         partial: "partials/index"
       }
     });

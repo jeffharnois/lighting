@@ -1,0 +1,12 @@
+<img src="images/LuxMain.jpg" class="stupidImage" />
+
+<script type="text/javascript">
+  $(function($) {
+    var bid = window.location.search;
+    $(document).ready(function() {
+      $('body').click(function() {
+        window.location = '/bracket'+bid;
+      });
+    });
+  })(jQuery);
+</script>

@@ -79,6 +79,16 @@ $sprites: co2 fire humidity iphone motion-detect on-off security smoke-alarm tem
     +background-image(image-url('bracket-selected.png'))
   &.twoline
     padding: 13px 10px 20px 70px
+  &.stupidDesc
+    padding: 13px 10px 20px 70px
+    .stupiddesc
+      font-size: 12px
+    &.twoline
+      font-size: 16px
+
+.stupidImage
+  width: 96%
+  margin: 0 2%
 
 @each $sprite in $sprites
   .btn-#{$sprite}
@@ -141,8 +151,7 @@ $sprites: co2 fire humidity iphone motion-detect on-off security smoke-alarm tem
         margin-bottom: 80px
         &:first-child
           margin-top: 45px
-    .set3,
-    .set6
+    .set3
       div
         margin-top: 125px
     .setTitle-dimming
@@ -193,14 +202,55 @@ $sprites: co2 fire humidity iphone motion-detect on-off security smoke-alarm tem
     width: 100%
     top: -580px
     left: -1024px
+    h1
+      margin-left: 5%
     &.in
       +transform(translate(1024px, 600px))
     .done
-      float: right
-    // +transition(transform, ease-in, 1s)
-    // &.tiny
-      // +transform(scale(0.2,0.2))
-
+      float: left
+      position: absolute
+      top: 490px
+      left: 355px
+      display: none
+    .set4
+      div
+        position: absolute
+        &:first-child
+          top: 200px
+          left: 10px
+        &:nth-child(2)
+          bottom: -280px
+          left: 10px
+        &:nth-child(3)
+          top: 200px
+          right: 10px
+        &:last-child
+          bottom: -280px
+          right: 10px
+    .set5
+      div
+        position: absolute
+        &:first-child
+          left: 205px
+          top: 315px
+        &:last-child
+          right: 205px
+          top: 360px
+    .set6
+      position: absolute
+      top: 75px
+      left: 327px
+      background-color: rgba(black, 0.8)
+      padding: 20px
+      text-align: center
+      width: 370px
+      height: 205px
+      +box-shadow(1px 1px 1px 0 rgba($white, 0.2))
+      div
+        text-align: left
+        +background-image(image-url('stupidButton.png'))
+        &.mine
+          +background-image(image-url('stupidButton-selected.png'))
 .final
   h1
     text-align: center
