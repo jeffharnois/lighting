@@ -23,7 +23,7 @@
     "feature": "controlfeatures",
     "featureName": "Control Features",
     "pick": [
-      {"id": 9, "type": "Diagnostic Health Check", "desc": "Light system function self-check", "imgclass": "smoke-alarm"},
+      {"id": 9, "type": "Diagnostic Health Check", "desc": "Light system function self-check", "imgclass": "health"},
       {"id": 10, "type": "Color Tuning", "desc": "User adjustable light color (CCT)", "imgclass": "temperature"},
       {"id": 11, "twoline": true, "type": "Fire Police Emergency Control", "desc": "Emergency driven lighting controls", "imgclass": "fire"},
       {"id": 12, "type": "Scheduled Dimming", "desc": "User selected dimming modes", "imgclass": "on-off"}
