@@ -5,8 +5,8 @@
     "pick": [
       {"id": 1, "type": "No Dimming", "desc": false, "imgclass": "on-off"},
       {"id": 2, "type": "0-10 Dimming", "desc": "Basic analog dimming", "imgclass": "temperature"},
-      {"id": 3, "type": "Phase Cut Triac", "desc": "Res. wall mounted dimming", "imgclass": "motion-detect"},
-      {"id": 4, "type": "SMARTY phone dimming", "desc": "Remote control via SMART phone", "imgclass": "iphone"}
+      {"id": 3, "type": "Phase Cut TRIAC", "desc": "Residential wall mounted dimming", "imgclass": "motion-detect"},
+      {"id": 4, "type": "Smart Phone Dimming", "desc": "Remote control via smart phone", "imgclass": "iphone"}
     ]
   },
   {
@@ -16,7 +16,7 @@
       {"id": 5, "twoline": true, "type": "Occupancy Motion Sensor", "desc": "Activity based light mgmt", "imgclass": "motion-detect"},
       {"id": 6, "twoline": true, "type": "Environmental Sensor CO2", "desc": "Monitor local env. factors", "imgclass": "co2"},
       {"id": 7, "type": "Ambient Light Sensor", "desc": "For constant illumination", "imgclass": "temperature"},
-      {"id": 8, "type": "Daylight Harvesting", "desc": "Adj.lighting to save energy", "imgclass": "on-off"}
+      {"id": 8, "type": "Daylight Driven Lighting", "desc": "Adj.lighting to save energy", "imgclass": "on-off"}
     ]
   },
   {
@@ -34,8 +34,8 @@
     "featureName": "Communication",
     "pick": [
       {"id": 13, "type": "DALI", "desc": "Config. radio protocol", "imgclass": "wifi"},
-      {"id": 14, "type": "ZigBee", "desc": "Wireless based on IEEE 80 2 wireless", "imgclass": "zigbee"},
-      {"id": 15, "type": "Zwave", "desc": "Prop. wireless mesh network protocol", "imgclass": "wifi"},
+      {"id": 14, "type": "ZigBee", "desc": "Wireless Mesh based on low power IEEE 80 2.15.4", "imgclass": "zigbee"},
+      {"id": 15, "type": "Zwave", "desc": "Proprietary Wireless Protocol", "imgclass": "wifi"},
       {"id": 16, "type": "6LoWPAN", "desc": "Internet protocol via low power wireless", "imgclass": "iphone"}
     ]
   }
