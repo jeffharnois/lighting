@@ -4,8 +4,8 @@
     "featureName": "Dimming",
     "pick": [
       {"id": 1, "type": "No Dimming", "desc": false, "imgclass": "on-off"},
-      {"id": 2, "type": "0-10 Dimming", "desc": "Basic analog dimming", "imgclass": "temperature"},
-      {"id": 3, "type": "Phase Cut TRIAC", "desc": "Residential wall mounted dimming", "imgclass": "motion-detect"},
+      {"id": 2, "type": "0-10 Dimming", "desc": "Basic analog dimming", "imgclass": "dimming"},
+      {"id": 3, "type": "Phase Cut TRIAC", "desc": "Residential wall mounted dimming", "imgclass": "triac"},
       {"id": 4, "type": "Smart Phone Dimming", "desc": "Remote control via smart phone", "imgclass": "iphone"}
     ]
   },
@@ -13,10 +13,10 @@
     "feature": "sensorandtech",
     "featureName": "Sensor and Technology",
     "pick": [
-      {"id": 5, "twoline": true, "type": "Occupancy Motion Sensor", "desc": "Activity based light mgmt", "imgclass": "motion-detect"},
+      {"id": 5, "twoline": true, "type": "Occupancy Motion Sensor", "desc": "Activity based light mgmt", "imgclass": "motion"},
       {"id": 6, "twoline": true, "type": "Environmental Sensor CO2", "desc": "Monitor local env. factors", "imgclass": "co2"},
-      {"id": 7, "type": "Ambient Light Sensor", "desc": "For constant illumination", "imgclass": "temperature"},
-      {"id": 8, "type": "Daylight Driven Lighting", "desc": "Adj.lighting to save energy", "imgclass": "on-off"}
+      {"id": 7, "type": "Ambient Light Sensor", "desc": "For constant illumination", "imgclass": "sensor"},
+      {"id": 8, "type": "Daylight Driven Lighting", "desc": "Adj.lighting to save energy", "imgclass": "daylight"}
     ]
   },
   {
@@ -24,19 +24,19 @@
     "featureName": "Control Features",
     "pick": [
       {"id": 9, "type": "Diagnostic Health Check", "desc": "Light system function self-check", "imgclass": "health"},
-      {"id": 10, "type": "Color Tuning", "desc": "User adjustable light color (CCT)", "imgclass": "temperature"},
+      {"id": 10, "type": "Color Tuning", "desc": "User adjustable light color (CCT)", "imgclass": "tuning"},
       {"id": 11, "twoline": true, "type": "Fire Police Emergency Control", "desc": "Emergency driven lighting controls", "imgclass": "fire"},
-      {"id": 12, "type": "Scheduled Dimming", "desc": "User selected dimming modes", "imgclass": "on-off"}
+      {"id": 12, "type": "Scheduled Dimming", "desc": "User selected dimming modes", "imgclass": "scheduled"}
     ]
   },
   {
     "feature": "communication",
     "featureName": "Communication",
     "pick": [
-      {"id": 13, "type": "DALI", "desc": "Config. radio protocol", "imgclass": "wifi"},
-      {"id": 14, "type": "ZigBee", "desc": "Wireless Mesh based on low power IEEE 80 2.15.4", "imgclass": "zigbee"},
-      {"id": 15, "type": "Zwave", "desc": "Proprietary Wireless Protocol", "imgclass": "wifi"},
-      {"id": 16, "type": "6LoWPAN", "desc": "Internet protocol via low power wireless", "imgclass": "iphone"}
+      {"id": 13, "type": "DALI", "desc": "Config. radio protocol", "imgclass": "DALI"},
+      {"id": 14, "type": "ZigBee", "desc": "Wireless Mesh on IEEE 80 2.15.4", "imgclass": "zigbee"},
+      {"id": 15, "type": "Zwave", "desc": "Proprietary Wireless Protocol", "imgclass": "zwave"},
+      {"id": 16, "type": "6LoWPAN", "desc": "Internet protocol via low power wireless", "imgclass": "l6loWPAN"}
     ]
   }
 ]
